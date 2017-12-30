@@ -780,6 +780,9 @@ function app__inherits(subClass, superClass) { if (typeof superClass !== "functi
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
 
+var GUN_URL = 'https://gun-dearwafeum.now.sh/gun';
+// GUN_URL = 'https://gunjs.herokuapp.com/gun'
+
 var app__ref = Object(preact_min["h"])(header_Header, null);
 
 var app__ref2 = Object(preact_min["h"])(profile_Profile, { path: '/profile/', user: 'me' });
@@ -798,9 +801,9 @@ var app_App = function (_Component) {
 			_this.currentUrl = e.url;
 		};
 
-		_this.gun = gun_default()('https://gunjs.herokuapp.com/gun').get('random/fDO4CKq98');
+		_this.gun = gun_default()(GUN_URL).get('random/fDO4CKq98');
 		// this.gun = Gun([location.origin, 'gun'].join('/'))
-		if (typeof window !== "undefined") window.gun = _this.gun;
+		if (typeof window !== 'undefined') window.gun = _this.gun;
 		return _this;
 	}
 

@@ -7,7 +7,7 @@
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build",
     "serve": "preact build && preact serve",
-    "deploy": "preact build && ghpages -p build && rm -rf build",
+    "deploy": "preact build && echo 'https://squirrul.com' >> build/CNAME && ghpages -p build && rm -rf build",
     "dev": "preact watch",
     "lint": "eslint src"
   },

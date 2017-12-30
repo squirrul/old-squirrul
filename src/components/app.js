@@ -7,13 +7,16 @@ import Profile from '../routes/profile';
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
 
+const GUN_URL = 'https://gun-dearwafeum.now.sh/gun';
+// GUN_URL = 'https://gunjs.herokuapp.com/gun'
+
 export default class App extends Component {
 
 	constructor() {
-		super()
-		this.gun = Gun('https://gunjs.herokuapp.com/gun').get('random/fDO4CKq98');
+		super();
+		this.gun = Gun(GUN_URL).get('random/fDO4CKq98');
 		// this.gun = Gun([location.origin, 'gun'].join('/'))
-		window.gun = this.gun;
+		if (typeof window !== 'undefined') window.gun = this.gun;
 	}
 
 	/** Gets fired when the route changes.

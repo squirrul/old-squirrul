@@ -9,13 +9,14 @@ import Profile from '../routes/profile';
 
 const GUN_URL = 'https://gun-dearwafeum.now.sh/gun';
 // GUN_URL = 'https://gunjs.herokuapp.com/gun'
+// this.gun = Gun([location.origin, 'gun'].join('/'))
 
 export default class App extends Component {
 
 	constructor() {
 		super();
-		this.gun = Gun(GUN_URL).get('random/fDO4CKq98');
-		// this.gun = Gun([location.origin, 'gun'].join('/'))
+		this.dbName = `db${window.location.hash}`;
+		this.gun = Gun(GUN_URL).get(this.dbName);
 		if (typeof window !== 'undefined') window.gun = this.gun;
 	}
 
@@ -32,7 +33,7 @@ export default class App extends Component {
 			<div id="app">
 				<Header />
 				<Router onChange={this.handleRoute}>
-					<Home path="/" gun={this.gun} />
+					<Home path="/" gun={this.gun} dbName={this.dbName} />
 					<Profile path="/profile/" user="me" />
 					<Profile path="/profile/:user" />
 				</Router>
